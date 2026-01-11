@@ -1,133 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>BioSolve | Biotech & Bioethics Problem Analyzer</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f7f8;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background: #0b5ed7;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        main {
-            max-width: 900px;
-            margin: 30px auto;
-            background: white;
-            padding: 25px;
-            border-radius: 8px;
-        }
-        textarea {
-            width: 100%;
-            height: 120px;
-            padding: 10px;
-            font-size: 16px;
-        }
-        button {
-            margin-top: 15px;
-            padding: 12px 20px;
-            font-size: 16px;
-            background: #0b5ed7;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        button:hover {
-            background: #0949a3;
-        }
-        section {
-            margin-top: 25px;
-        }
-        h2 {
-            color: #0b5ed7;
-        }
-        .box {
-            background: #eef2f5;
-            padding: 15px;
-            border-radius: 6px;
-            margin-top: 10px;
-        }
-        footer {
-            text-align: center;
-            margin-top: 30px;
-            color: gray;
-            font-size: 14px;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>BioSolve | Responsible Biotechnology Analysis</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f7f8;
+    margin: 0;
+}
+header {
+    background: #0b5ed7;
+    color: white;
+    padding: 25px;
+    text-align: center;
+}
+main {
+    max-width: 1000px;
+    margin: 30px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+}
+textarea {
+    width: 100%;
+    height: 120px;
+    font-size: 16px;
+    padding: 10px;
+}
+button {
+    margin-top: 15px;
+    padding: 12px 25px;
+    font-size: 16px;
+    background: #0b5ed7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.analysis-box {
+    background: #eef2f5;
+    padding: 18px;
+    border-radius: 6px;
+    margin-top: 20px;
+}
+img {
+    width: 100%;
+    border-radius: 6px;
+    margin-top: 10px;
+}
+h2 {
+    color: #0b5ed7;
+}
+footer {
+    text-align: center;
+    margin: 30px;
+    color: gray;
+}
+</style>
 </head>
 
 <body>
 
 <header>
-    <h1>BioSolve</h1>
-    <p>Analyzing Biotechnology Problems through Science, Research & Ethics</p>
+<h1>BioSolve</h1>
+<p>Understanding biotechnology problems beyond Google answers</p>
 </header>
 
 <main>
-    <h2>Enter a Biotechnology Problem</h2>
-    <textarea id="problem" placeholder="Example: Is it ethical to genetically modify corals to survive climate change?"></textarea>
-    <br>
-    <button onclick="analyzeProblem()">Analyze Problem</button>
 
-    <section id="output" style="display:none;">
-        <h2>Analysis</h2>
+<h2>Enter a Biotechnology Problem</h2>
+<textarea id="problem" placeholder="Example: Is it ethical to genetically modify coral reefs to survive climate change?"></textarea>
+<br>
+<button onclick="analyze()">Analyze Responsibly</button>
 
-        <div class="box">
-            <h3>🧬 Scientific & Biotechnology Perspective</h3>
-            <p id="science"></p>
-        </div>
+<div id="output" style="display:none;">
 
-        <div class="box">
-            <h3>⚖️ Ethical Perspective</h3>
-            <p id="ethics"></p>
-        </div>
+<div class="analysis-box">
+<h3>🧠 Problem Context</h3>
+<p id="context"></p>
+<img id="image">
+</div>
 
-        <div class="box">
-            <h3>🌍 Consequences & Impact</h3>
-            <p id="consequences"></p>
-        </div>
+<div class="analysis-box">
+<h3>🧬 Scientific Perspective</h3>
+<p id="science"></p>
+</div>
 
-        <div class="box">
-            <h3>🔍 Root Cause Analysis</h3>
-            <p id="root"></p>
-        </div>
+<div class="analysis-box">
+<h3>⚖️ Ethical Perspective</h3>
+<p id="ethics"></p>
+</div>
 
-        <div class="box">
-            <h3>✅ Possible Solutions</h3>
-            <p id="solutions"></p>
-        </div>
-    </section>
+<div class="analysis-box">
+<h3>🌍 Consequences & Trade-offs</h3>
+<p id="consequences"></p>
+</div>
+
+<div class="analysis-box">
+<h3>✅ Responsible Path Forward</h3>
+<p id="solutions"></p>
+</div>
+
+</div>
+
 </main>
 
 <footer>
-    Built by a Biotechnology Student | BioSolve Project
+Built by a Biotechnology Student | BioSolve
 </footer>
 
 <script>
-function analyzeProblem() {
+function analyze() {
+    const text = document.getElementById("problem").value.toLowerCase();
     document.getElementById("output").style.display = "block";
 
-    document.getElementById("science").innerText =
-        "From a biotechnology perspective, this problem involves understanding biological systems, genetic mechanisms, and technological interventions such as genetic engineering, selective breeding, or biotechnological conservation methods.";
+    if (text.includes("coral") || text.includes("marine") || text.includes("ocean")) {
+        document.getElementById("context").innerText =
+        "This problem relates to marine ecosystems affected by climate change and human intervention.";
 
-    document.getElementById("ethics").innerText =
-        "Ethically, the issue raises concerns about human intervention in natural ecosystems, long-term ecological risks, consent of affected communities, and responsibility towards future generations.";
+        document.getElementById("image").src =
+        "https://upload.wikimedia.org/wikipedia/commons/3/3f/Coral_bleaching.jpg";
 
-    document.getElementById("consequences").innerText =
-        "Potential consequences include ecological imbalance, unintended genetic effects, biodiversity loss, or positive outcomes such as species preservation and ecosystem stability.";
+        document.getElementById("science").innerText =
+        "Marine biotechnology explores genetic resilience, symbiotic relationships, and stress tolerance in ocean organisms.";
 
-    document.getElementById("root").innerText =
-        "The root causes often include climate change, pollution, unsustainable human activities, lack of regulation, and insufficient environmental protection policies.";
+        document.getElementById("ethics").innerText =
+        "Ethical concerns include altering natural ecosystems, long-term ecological uncertainty, and human responsibility.";
 
-    document.getElementById("solutions").innerText =
-        "Solutions may involve a combination of responsible biotechnology use, strict ethical oversight, environmental conservation, policy changes, and public awareness.";
+        document.getElementById("consequences").innerText =
+        "Short-term survival may improve, but long-term ecosystem balance and evolutionary outcomes remain uncertain.";
+
+        document.getElementById("solutions").innerText =
+        "Biotechnology should complement conservation, emission reduction, and ecological monitoring.";
+    }
+    else if (text.includes("gene") || text.includes("crispr") || text.includes("gmo")) {
+        document.getElementById("context").innerText =
+        "This problem involves genetic technologies used to modify biological systems.";
+
+        document.getElementById("image").src =
+        "https://upload.wikimedia.org/wikipedia/commons/3/3a/CRISPR-Cas9.png";
+
+        document.getElementById("science").innerText =
+        "Gene-editing tools modify DNA sequences to achieve desired traits.";
+
+        document.getElementById("ethics").innerText =
+        "Ethical debates focus on safety, consent, misuse, and unintended genetic effects.";
+
+        document.getElementById("consequences").innerText =
+        "Potential benefits coexist with risks such as off-target effects and social inequality.";
+
+        document.getElementById("solutions").innerText =
+        "Strong regulation, transparency, and ethical review are essential.";
+    }
+    else {
+        document.getElementById("context").innerText =
+        "This is a broad biotechnology problem requiring interdisciplinary evaluation.";
+
+        document.getElementById("image").src =
+        "https://upload.wikimedia.org/wikipedia/commons/6/6a/DNA_double_helix.png";
+
+        document.getElementById("science").innerText =
+        "Biotechnology applies biological knowledge to solve practical problems.";
+
+        document.getElementById("ethics").innerText =
+        "Ethical analysis ensures responsible innovation and harm prevention.";
+
+        document.getElementById("consequences").innerText =
+        "Impacts vary depending on scale, application, and governance.";
+
+        document.getElementById("solutions").innerText =
+        "Balanced decision-making and evidence-based policies are required.";
+    }
 }
 </script>
 
