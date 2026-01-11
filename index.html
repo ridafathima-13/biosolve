@@ -117,72 +117,99 @@ Built by a Biotechnology Student | BioSolve
 <script>
 function analyze() {
     const text = document.getElementById("problem").value.trim().toLowerCase();
-if (text === "") {
-    alert("Please enter a biotechnology problem first.");
-    return;
-}
+    if (text === "") {
+        alert("Please enter a biotechnology problem.");
+        return;
+    }
 
     document.getElementById("output").style.display = "block";
 
-    if (text.includes("coral") || text.includes("marine") || text.includes("ocean")) {
+    // MICROORGANISMS / BIOREMEDIATION
+    if (text.includes("bacteria") || text.includes("oil spill") || text.includes("bioremediation")) {
         document.getElementById("context").innerText =
-        "This problem relates to marine ecosystems affected by climate change and human intervention.";
+        "This problem involves the use of engineered microorganisms to restore polluted environments.";
+
+        document.getElementById("image").src =
+        "https://upload.wikimedia.org/wikipedia/commons/7/7e/Bioremediation_process_diagram.png";
+
+        document.getElementById("science").innerText =
+        "Microbial biotechnology uses genetically enhanced bacteria to metabolize toxic compounds such as hydrocarbons.";
+
+        document.getElementById("ethics").innerText =
+        "Ethical concerns include ecological imbalance, horizontal gene transfer, and lack of long-term containment.";
+
+        document.getElementById("consequences").innerText =
+        "While pollution reduction may be rapid, unintended spread of modified microbes could disrupt native ecosystems.";
+
+        document.getElementById("solutions").innerText =
+        "Strict containment strategies, kill-switch mechanisms, and regulatory oversight are essential.";
+    }
+
+    // MARINE ECOSYSTEMS
+    else if (text.includes("coral") || text.includes("reef") || text.includes("marine") || text.includes("ocean")) {
+        document.getElementById("context").innerText =
+        "This problem affects marine ecosystems facing climate-induced stress and biodiversity loss.";
 
         document.getElementById("image").src =
         "https://upload.wikimedia.org/wikipedia/commons/3/3f/Coral_bleaching.jpg";
 
         document.getElementById("science").innerText =
-        "Marine biotechnology explores genetic resilience, symbiotic relationships, and stress tolerance in ocean organisms.";
+        "Marine biotechnology explores genetic resilience and adaptive capacity in ocean organisms.";
 
         document.getElementById("ethics").innerText =
-        "Ethical concerns include altering natural ecosystems, long-term ecological uncertainty, and human responsibility.";
+        "Ethical tensions arise between ecosystem preservation and human-driven genetic intervention.";
 
         document.getElementById("consequences").innerText =
-        "Short-term survival may improve, but long-term ecosystem balance and evolutionary outcomes remain uncertain.";
+        "Short-term ecosystem rescue may conflict with long-term evolutionary integrity.";
 
         document.getElementById("solutions").innerText =
-        "Biotechnology should complement conservation, emission reduction, and ecological monitoring.";
+        "Biotechnology should complement environmental protection and climate mitigation.";
     }
-    else if (text.includes("gene") || text.includes("crispr") || text.includes("gmo")) {
+
+    // GENE EDITING
+    else if (text.includes("gene") || text.includes("crispr") || text.includes("gmo") || text.includes("genetic")) {
         document.getElementById("context").innerText =
-        "This problem involves genetic technologies used to modify biological systems.";
+        "This problem concerns direct manipulation of genetic material to alter biological traits.";
 
         document.getElementById("image").src =
         "https://upload.wikimedia.org/wikipedia/commons/3/3a/CRISPR-Cas9.png";
 
         document.getElementById("science").innerText =
-        "Gene-editing tools modify DNA sequences to achieve desired traits.";
+        "Gene-editing technologies modify DNA sequences to achieve targeted biological outcomes.";
 
         document.getElementById("ethics").innerText =
-        "Ethical debates focus on safety, consent, misuse, and unintended genetic effects.";
+        "Ethical issues include safety, consent, equity, and potential misuse.";
 
         document.getElementById("consequences").innerText =
-        "Potential benefits coexist with risks such as off-target effects and social inequality.";
+        "Benefits may be substantial, but unintended effects could be irreversible.";
 
         document.getElementById("solutions").innerText =
-        "Strong regulation, transparency, and ethical review are essential.";
+        "Robust regulation and transparent ethical review are required.";
     }
+
+    // DEFAULT
     else {
         document.getElementById("context").innerText =
-        "This is a broad biotechnology problem requiring interdisciplinary evaluation.";
+        "This is a multidisciplinary biotechnology problem requiring scientific and ethical evaluation.";
 
         document.getElementById("image").src =
         "https://upload.wikimedia.org/wikipedia/commons/6/6a/DNA_double_helix.png";
 
         document.getElementById("science").innerText =
-        "Biotechnology applies biological knowledge to solve practical problems.";
+        "Biotechnology applies biological systems to solve complex real-world problems.";
 
         document.getElementById("ethics").innerText =
-        "Ethical analysis ensures responsible innovation and harm prevention.";
+        "Ethical frameworks ensure responsible innovation and harm prevention.";
 
         document.getElementById("consequences").innerText =
-        "Impacts vary depending on scale, application, and governance.";
+        "Outcomes depend on implementation scale and governance.";
 
         document.getElementById("solutions").innerText =
-        "Balanced decision-making and evidence-based policies are required.";
+        "Balanced, evidence-based decision-making is essential.";
     }
 }
 </script>
+
 
 </body>
 </html>
