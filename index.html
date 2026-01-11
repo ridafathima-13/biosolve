@@ -1,160 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BioSolve | Biotechnology Problem Analysis Platform</title>
-
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #eef6f5;
-      margin: 0;
-      padding: 0;
-      color: #333;
-    }
-
-    header {
-      background-color: #0b5f5a;
-      color: white;
-      padding: 40px 20px;
-      text-align: center;
-    }
-
-    section {
-      max-width: 900px;
-      margin: auto;
-      padding: 30px 20px;
-    }
-
-    .card {
-      background: white;
-      padding: 25px;
-      margin-bottom: 25px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-
-    h2 {
-      color: #0b5f5a;
-    }
-
-    button {
-      background-color: #0b5f5a;
-      color: white;
-      border: none;
-      padding: 12px 18px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 15px;
-      margin-top: 10px;
-      margin-right: 10px;
-    }
-
-    button:hover {
-      background-color: #094c48;
-    }
-
-    footer {
-      background-color: #0b5f5a;
-      color: white;
-      text-align: center;
-      padding: 15px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>BioSolve | Biotech & Bioethics Problem Analyzer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7f8;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #0b5ed7;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        main {
+            max-width: 900px;
+            margin: 30px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+        }
+        textarea {
+            width: 100%;
+            height: 120px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            margin-top: 15px;
+            padding: 12px 20px;
+            font-size: 16px;
+            background: #0b5ed7;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #0949a3;
+        }
+        section {
+            margin-top: 25px;
+        }
+        h2 {
+            color: #0b5ed7;
+        }
+        .box {
+            background: #eef2f5;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 10px;
+        }
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            color: gray;
+            font-size: 14px;
+        }
+    </style>
 </head>
 
 <body>
 
 <header>
-  <h1>BioSolve</h1>
-  <p>A Multi-Perspective Biotechnology Problem-Solving Platform</p>
+    <h1>BioSolve</h1>
+    <p>Analyzing Biotechnology Problems through Science, Research & Ethics</p>
 </header>
 
-<section>
+<main>
+    <h2>Enter a Biotechnology Problem</h2>
+    <textarea id="problem" placeholder="Example: Is it ethical to genetically modify corals to survive climate change?"></textarea>
+    <br>
+    <button onclick="analyzeProblem()">Analyze Problem</button>
 
-  <div class="card">
-    <h2>Problem Scenario</h2>
-    <p>
-      Coral reef ecosystems are rapidly declining due to rising ocean temperatures,
-      pollution, and human activities. Scientists are exploring biotechnology-based
-      coral restoration techniques to prevent irreversible damage.
-    </p>
-  </div>
+    <section id="output" style="display:none;">
+        <h2>Analysis</h2>
 
-  <div class="card">
-    <h2>Root Cause Analysis</h2>
-    <p>
-      The decline of coral reefs is primarily caused by climate change-induced ocean
-      warming, chemical and plastic pollution, overfishing, and habitat destruction.
-      These factors weaken coral resilience and accelerate bleaching events.
-    </p>
-  </div>
+        <div class="box">
+            <h3>🧬 Scientific & Biotechnology Perspective</h3>
+            <p id="science"></p>
+        </div>
 
-  <div class="card">
-    <h2>Analyze the Problem from Different Perspectives</h2>
-    <button onclick="showPerspective('science')">Biotechnology & Research View</button>
-    <button onclick="showPerspective('ethics')">Ethical & Conservation View</button>
-    <button onclick="showPerspective('integrated')">Integrated Approach</button>
-  </div>
+        <div class="box">
+            <h3>⚖️ Ethical Perspective</h3>
+            <p id="ethics"></p>
+        </div>
 
-  <div class="card" id="output" style="display:none;">
-    <h2 id="outputTitle"></h2>
-    <p id="outputText"></p>
-  </div>
+        <div class="box">
+            <h3>🌍 Consequences & Impact</h3>
+            <p id="consequences"></p>
+        </div>
 
-  <div class="card">
-    <h2>Potential Consequences</h2>
-    <ul>
-      <li>Loss of marine biodiversity and ecosystem services</li>
-      <li>Economic impact on fisheries and coastal communities</li>
-      <li>Ethical risks of unintended ecological imbalance</li>
-      <li>Long-term sustainability challenges</li>
-    </ul>
-  </div>
+        <div class="box">
+            <h3>🔍 Root Cause Analysis</h3>
+            <p id="root"></p>
+        </div>
 
-  <div class="card">
-    <h2>How Can We Work on This Problem?</h2>
-    <ul>
-      <li>Encourage interdisciplinary research in marine biotechnology</li>
-      <li>Develop ethical guidelines for environmental interventions</li>
-      <li>Reduce pollution and greenhouse gas emissions</li>
-      <li>Strengthen conservation policies and public awareness</li>
-    </ul>
-  </div>
-
-</section>
+        <div class="box">
+            <h3>✅ Possible Solutions</h3>
+            <p id="solutions"></p>
+        </div>
+    </section>
+</main>
 
 <footer>
-  <p>Created by a Biotechnology Student | Focus: Marine Biology & Bioethics</p>
+    Built by a Biotechnology Student | BioSolve Project
 </footer>
 
 <script>
-  function showPerspective(type) {
-    const output = document.getElementById("output");
-    const title = document.getElementById("outputTitle");
-    const text = document.getElementById("outputText");
+function analyzeProblem() {
+    document.getElementById("output").style.display = "block";
 
-    output.style.display = "block";
+    document.getElementById("science").innerText =
+        "From a biotechnology perspective, this problem involves understanding biological systems, genetic mechanisms, and technological interventions such as genetic engineering, selective breeding, or biotechnological conservation methods.";
 
-    if (type === "science") {
-      title.innerText = "Biotechnology & Research Perspective";
-      text.innerText =
-        "From a scientific standpoint, approaches such as assisted evolution, coral probiotics, and selective breeding may enhance coral resilience. These methods require careful experimentation, long-term monitoring, and ecological validation.";
-    }
+    document.getElementById("ethics").innerText =
+        "Ethically, the issue raises concerns about human intervention in natural ecosystems, long-term ecological risks, consent of affected communities, and responsibility towards future generations.";
 
-    if (type === "ethics") {
-      title.innerText = "Ethical & Conservation Perspective";
-      text.innerText =
-        "Ethically, intervening in natural ecosystems raises concerns about long-term ecological balance, unintended consequences, and human responsibility. Conservation-first strategies emphasize minimizing harm and supporting natural recovery processes.";
-    }
+    document.getElementById("consequences").innerText =
+        "Potential consequences include ecological imbalance, unintended genetic effects, biodiversity loss, or positive outcomes such as species preservation and ecosystem stability.";
 
-    if (type === "integrated") {
-      title.innerText = "Integrated Science–Ethics Approach";
-      text.innerText =
-        "A responsible solution combines cautious biotechnological innovation with strong ethical oversight, conservation practices, and policy regulation to ensure sustainability and ecological integrity.";
-    }
-  }
+    document.getElementById("root").innerText =
+        "The root causes often include climate change, pollution, unsustainable human activities, lack of regulation, and insufficient environmental protection policies.";
+
+    document.getElementById("solutions").innerText =
+        "Solutions may involve a combination of responsible biotechnology use, strict ethical oversight, environmental conservation, policy changes, and public awareness.";
+}
 </script>
 
 </body>
