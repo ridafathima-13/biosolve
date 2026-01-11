@@ -73,7 +73,8 @@ footer {
 <h2>Enter a Biotechnology Problem</h2>
 <textarea id="problem" placeholder="Example: Is it ethical to genetically modify coral reefs to survive climate change?"></textarea>
 <br>
-<button onclick="alert('JavaScript is working')">Analyze Responsibly</button>
+<button onclick="analyze()">Analyze Responsibly</button>
+
 
 
 <div id="output" style="display:none;">
@@ -114,7 +115,12 @@ Built by a Biotechnology Student | BioSolve
 
 <script>
 function analyze() {
-    const text = document.getElementById("problem").value.toLowerCase();
+    const text = document.getElementById("problem").value.trim().toLowerCase();
+if (text === "") {
+    alert("Please enter a biotechnology problem first.");
+    return;
+}
+
     document.getElementById("output").style.display = "block";
 
     if (text.includes("coral") || text.includes("marine") || text.includes("ocean")) {
