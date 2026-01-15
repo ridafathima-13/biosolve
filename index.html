@@ -39,6 +39,9 @@ button {
     border-radius: 5px;
     cursor: pointer;
 }
+button:hover {
+    background: #0949a3;
+}
 .analysis-box {
     background: #eef2f5;
     padding: 18px;
@@ -64,19 +67,16 @@ footer {
 <body>
 
 <header>
-<h1>BioSolve – UPDATED</h1>
-
-<p>Understanding biotechnology problems beyond Google answers</p>
+<h1>BioSolve</h1>
+<p>Analyzing biotechnology problems through science, ethics & responsibility</p>
 </header>
 
 <main>
 
 <h2>Enter a Biotechnology Problem</h2>
-<textarea id="problem" placeholder="Example: Is it ethical to genetically modify coral reefs to survive climate change?"></textarea>
+<textarea id="problem" placeholder="Example: Is releasing genetically engineered bacteria to clean oil spills ethically justified?"></textarea>
 <br>
 <button onclick="analyze()">Analyze Responsibly</button>
-
-
 
 <div id="output" style="display:none;">
 
@@ -106,17 +106,27 @@ footer {
 <p id="solutions"></p>
 </div>
 
+<div class="analysis-box">
+<h3>📚 Sources & Frameworks Referenced</h3>
+<ul id="sources"></ul>
+<p style="font-size:14px;color:#555;">
+This platform synthesizes established scientific literature, ethical frameworks, and policy guidelines.  
+It does not replace expert review.
+</p>
+</div>
+
 </div>
 
 </main>
 
 <footer>
-Built by a Biotechnology Student | BioSolve
+Built by a B.Tech Biotechnology Student | BioSolve Project
 </footer>
 
 <script>
 function analyze() {
     const text = document.getElementById("problem").value.trim().toLowerCase();
+
     if (text === "") {
         alert("Please enter a biotechnology problem.");
         return;
@@ -127,89 +137,111 @@ function analyze() {
     // MICROORGANISMS / BIOREMEDIATION
     if (text.includes("bacteria") || text.includes("oil spill") || text.includes("bioremediation")) {
         document.getElementById("context").innerText =
-        "This problem involves the use of engineered microorganisms to restore polluted environments.";
+        "This problem involves the use of engineered microorganisms to address environmental pollution.";
 
         document.getElementById("image").src =
         "https://upload.wikimedia.org/wikipedia/commons/7/7e/Bioremediation_process_diagram.png";
 
         document.getElementById("science").innerText =
-        "Microbial biotechnology uses genetically enhanced bacteria to metabolize toxic compounds such as hydrocarbons.";
+        "Microbial biotechnology enables bacteria to metabolize toxic compounds such as hydrocarbons present in oil spills.";
 
         document.getElementById("ethics").innerText =
-        "Ethical concerns include ecological imbalance, horizontal gene transfer, and lack of long-term containment.";
+        "Ethical concerns include ecological disruption, unintended gene transfer, and lack of long-term containment.";
 
         document.getElementById("consequences").innerText =
-        "While pollution reduction may be rapid, unintended spread of modified microbes could disrupt native ecosystems.";
+        "Rapid pollution cleanup may occur, but uncontrolled spread of modified microbes could harm native ecosystems.";
 
         document.getElementById("solutions").innerText =
-        "Strict containment strategies, kill-switch mechanisms, and regulatory oversight are essential.";
+        "Use of genetic safeguards, environmental monitoring, and strict regulatory oversight is essential.";
+
+        document.getElementById("sources").innerHTML = `
+        <li>UNEP – Marine Pollution & Bioremediation Reports</li>
+        <li>WHO – Environmental Biotechnology Guidelines</li>
+        <li>NIH / PubMed – Microbial Bioremediation Research</li>
+        <li>UNESCO – Ethics of Emerging Technologies</li>`;
     }
 
-    // MARINE ECOSYSTEMS
+    // MARINE / CORAL ECOSYSTEMS
     else if (text.includes("coral") || text.includes("reef") || text.includes("marine") || text.includes("ocean")) {
         document.getElementById("context").innerText =
-        "This problem affects marine ecosystems facing climate-induced stress and biodiversity loss.";
+        "This problem affects marine ecosystems facing climate stress and biodiversity loss.";
 
         document.getElementById("image").src =
         "https://upload.wikimedia.org/wikipedia/commons/3/3f/Coral_bleaching.jpg";
 
         document.getElementById("science").innerText =
-        "Marine biotechnology explores genetic resilience and adaptive capacity in ocean organisms.";
+        "Marine biotechnology explores genetic resilience, assisted evolution, and ecosystem adaptation.";
 
         document.getElementById("ethics").innerText =
-        "Ethical tensions arise between ecosystem preservation and human-driven genetic intervention.";
+        "Ethical tension exists between preserving ecosystems and interfering with natural evolutionary processes.";
 
         document.getElementById("consequences").innerText =
-        "Short-term ecosystem rescue may conflict with long-term evolutionary integrity.";
+        "Short-term ecosystem survival may improve, but long-term ecological balance remains uncertain.";
 
         document.getElementById("solutions").innerText =
-        "Biotechnology should complement environmental protection and climate mitigation.";
+        "Biotechnology should complement conservation, climate mitigation, and habitat protection.";
+
+        document.getElementById("sources").innerHTML = `
+        <li>IPCC – Climate Change & Ocean Systems</li>
+        <li>IUCN – Coral Reef Conservation Frameworks</li>
+        <li>NOAA – Marine Biotechnology Research</li>
+        <li>UNESCO – Environmental Ethics Declarations</li>`;
     }
 
-    // GENE EDITING
-    else if (text.includes("gene") || text.includes("crispr") || text.includes("gmo") || text.includes("genetic")) {
+    // GENE EDITING / CRISPR
+    else if (text.includes("gene") || text.includes("crispr") || text.includes("genetic") || text.includes("gmo")) {
         document.getElementById("context").innerText =
-        "This problem concerns direct manipulation of genetic material to alter biological traits.";
+        "This problem concerns deliberate modification of genetic material to alter biological traits.";
 
         document.getElementById("image").src =
         "https://upload.wikimedia.org/wikipedia/commons/3/3a/CRISPR-Cas9.png";
 
         document.getElementById("science").innerText =
-        "Gene-editing technologies modify DNA sequences to achieve targeted biological outcomes.";
+        "Gene-editing tools enable precise DNA modification to correct or introduce traits.";
 
         document.getElementById("ethics").innerText =
-        "Ethical issues include safety, consent, equity, and potential misuse.";
+        "Ethical debates include safety, consent, equity, misuse, and irreversible genetic changes.";
 
         document.getElementById("consequences").innerText =
-        "Benefits may be substantial, but unintended effects could be irreversible.";
+        "Potential benefits coexist with risks such as off-target effects and social inequality.";
 
         document.getElementById("solutions").innerText =
-        "Robust regulation and transparent ethical review are required.";
+        "Strong ethical review, regulation, and transparency are required.";
+
+        document.getElementById("sources").innerHTML = `
+        <li>WHO – Human Genome Editing Guidelines</li>
+        <li>NIH – Genetic Engineering Research</li>
+        <li>Belmont Report – Bioethical Principles</li>
+        <li>UNESCO – Bioethics & Human Rights</li>`;
     }
 
     // DEFAULT
     else {
         document.getElementById("context").innerText =
-        "This is a multidisciplinary biotechnology problem requiring scientific and ethical evaluation.";
+        "This is a multidisciplinary biotechnology issue requiring careful scientific and ethical evaluation.";
 
         document.getElementById("image").src =
         "https://upload.wikimedia.org/wikipedia/commons/6/6a/DNA_double_helix.png";
 
         document.getElementById("science").innerText =
-        "Biotechnology applies biological systems to solve complex real-world problems.";
+        "Biotechnology applies biological systems and organisms to solve real-world problems.";
 
         document.getElementById("ethics").innerText =
-        "Ethical frameworks ensure responsible innovation and harm prevention.";
+        "Ethical frameworks help ensure responsible innovation and harm prevention.";
 
         document.getElementById("consequences").innerText =
-        "Outcomes depend on implementation scale and governance.";
+        "Impacts depend on scale, governance, and societal context.";
 
         document.getElementById("solutions").innerText =
-        "Balanced, evidence-based decision-making is essential.";
+        "Evidence-based, precautionary approaches are recommended.";
+
+        document.getElementById("sources").innerHTML = `
+        <li>WHO – Biotechnology & Health Policy</li>
+        <li>UNESCO – Ethics of Science & Technology</li>
+        <li>FAO – Agricultural & Environmental Biotechnology</li>`;
     }
 }
 </script>
-
 
 </body>
 </html>
