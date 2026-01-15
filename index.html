@@ -68,7 +68,7 @@ footer {
 
 <header>
 <h1>BioSolve</h1>
-<p>Analyzing biotechnology problems through science, ethics & responsibility</p>
+<p>A decision-support framework for biotechnology & bioethics</p>
 </header>
 
 <main>
@@ -87,31 +87,32 @@ footer {
 </div>
 
 <div class="analysis-box">
-<h3>🧬 Scientific Perspective</h3>
+<h3>🧬 Scientific Reasoning</h3>
 <p id="science"></p>
 </div>
 
 <div class="analysis-box">
-<h3>⚖️ Ethical Perspective</h3>
+<h3>⚖️ Ethical Analysis</h3>
 <p id="ethics"></p>
 </div>
 
 <div class="analysis-box">
-<h3>🌍 Consequences & Trade-offs</h3>
+<h3>🌍 Consequences & Risk Considerations</h3>
 <p id="consequences"></p>
 </div>
 
 <div class="analysis-box">
-<h3>✅ Responsible Path Forward</h3>
+<h3>✅ Responsible Decision Path</h3>
 <p id="solutions"></p>
 </div>
 
 <div class="analysis-box">
-<h3>📚 Sources & Frameworks Referenced</h3>
+<h3>📚 Methodology & Knowledge Frameworks Used</h3>
 <ul id="sources"></ul>
 <p style="font-size:14px;color:#555;">
-This platform synthesizes established scientific literature, ethical frameworks, and policy guidelines.  
-It does not replace expert review.
+BioSolve does not retrieve live data.  
+It applies established scientific principles, ethical frameworks, and policy reasoning
+derived from authoritative literature to structure responsible analysis.
 </p>
 </div>
 
@@ -120,13 +121,12 @@ It does not replace expert review.
 </main>
 
 <footer>
-Built by a B.Tech Biotechnology Student | BioSolve Project
+Built by a B.Tech Biotechnology Student | BioSolve
 </footer>
 
 <script>
 function analyze() {
     const text = document.getElementById("problem").value.trim().toLowerCase();
-
     if (text === "") {
         alert("Please enter a biotechnology problem.");
         return;
@@ -134,111 +134,111 @@ function analyze() {
 
     document.getElementById("output").style.display = "block";
 
-    // MICROORGANISMS / BIOREMEDIATION
-    if (text.includes("bacteria") || text.includes("oil spill") || text.includes("bioremediation")) {
+    // BIOREMEDIATION / MICROORGANISMS
+    if (text.includes("bacteria") || text.includes("oil") || text.includes("bioremediation")) {
         document.getElementById("context").innerText =
-        "This problem involves the use of engineered microorganisms to address environmental pollution.";
+        "This problem involves environmental restoration using engineered microorganisms.";
 
         document.getElementById("image").src =
         "https://upload.wikimedia.org/wikipedia/commons/7/7e/Bioremediation_process_diagram.png";
 
         document.getElementById("science").innerText =
-        "Microbial biotechnology enables bacteria to metabolize toxic compounds such as hydrocarbons present in oil spills.";
+        "Scientific reasoning focuses on microbial metabolism, gene stability, ecosystem interactions, and containment.";
 
         document.getElementById("ethics").innerText =
-        "Ethical concerns include ecological disruption, unintended gene transfer, and lack of long-term containment.";
+        "Ethical analysis weighs environmental benefit against ecological uncertainty and unintended spread.";
 
         document.getElementById("consequences").innerText =
-        "Rapid pollution cleanup may occur, but uncontrolled spread of modified microbes could harm native ecosystems.";
+        "Short-term pollution reduction may occur, but long-term ecological risks must be assessed.";
 
         document.getElementById("solutions").innerText =
-        "Use of genetic safeguards, environmental monitoring, and strict regulatory oversight is essential.";
+        "Responsible use requires genetic safeguards, monitoring, and regulatory approval.";
 
         document.getElementById("sources").innerHTML = `
-        <li>UNEP – Marine Pollution & Bioremediation Reports</li>
-        <li>WHO – Environmental Biotechnology Guidelines</li>
-        <li>NIH / PubMed – Microbial Bioremediation Research</li>
-        <li>UNESCO – Ethics of Emerging Technologies</li>`;
+        <li>Environmental Biotechnology Principles (UNEP, WHO)</li>
+        <li>Precautionary Principle</li>
+        <li>Microbial Ecology & Risk Assessment Models</li>
+        <li>UNESCO Ethics of Science Framework</li>`;
     }
 
-    // MARINE / CORAL ECOSYSTEMS
+    // MARINE ECOSYSTEMS
     else if (text.includes("coral") || text.includes("reef") || text.includes("marine") || text.includes("ocean")) {
         document.getElementById("context").innerText =
-        "This problem affects marine ecosystems facing climate stress and biodiversity loss.";
+        "This problem concerns marine ecosystems under climate and anthropogenic stress.";
 
         document.getElementById("image").src =
         "https://upload.wikimedia.org/wikipedia/commons/3/3f/Coral_bleaching.jpg";
 
         document.getElementById("science").innerText =
-        "Marine biotechnology explores genetic resilience, assisted evolution, and ecosystem adaptation.";
+        "Analysis draws on marine biology, symbiosis, adaptation, and ecosystem resilience.";
 
         document.getElementById("ethics").innerText =
-        "Ethical tension exists between preserving ecosystems and interfering with natural evolutionary processes.";
+        "Ethical reasoning considers conservation responsibility versus interference with natural systems.";
 
         document.getElementById("consequences").innerText =
-        "Short-term ecosystem survival may improve, but long-term ecological balance remains uncertain.";
+        "Intervention may prevent extinction but alter long-term evolutionary trajectories.";
 
         document.getElementById("solutions").innerText =
-        "Biotechnology should complement conservation, climate mitigation, and habitat protection.";
+        "Biotechnology should be a supportive tool alongside climate mitigation.";
 
         document.getElementById("sources").innerHTML = `
-        <li>IPCC – Climate Change & Ocean Systems</li>
-        <li>IUCN – Coral Reef Conservation Frameworks</li>
-        <li>NOAA – Marine Biotechnology Research</li>
-        <li>UNESCO – Environmental Ethics Declarations</li>`;
+        <li>Marine Ecology & Climate Impact Models (IPCC)</li>
+        <li>IUCN Conservation Ethics</li>
+        <li>Ecosystem-Based Management Frameworks</li>
+        <li>Environmental Ethics Literature</li>`;
     }
 
-    // GENE EDITING / CRISPR
-    else if (text.includes("gene") || text.includes("crispr") || text.includes("genetic") || text.includes("gmo")) {
+    // GENE EDITING
+    else if (text.includes("gene") || text.includes("crispr") || text.includes("genetic")) {
         document.getElementById("context").innerText =
-        "This problem concerns deliberate modification of genetic material to alter biological traits.";
+        "This problem involves deliberate modification of genetic material.";
 
         document.getElementById("image").src =
         "https://upload.wikimedia.org/wikipedia/commons/3/3a/CRISPR-Cas9.png";
 
         document.getElementById("science").innerText =
-        "Gene-editing tools enable precise DNA modification to correct or introduce traits.";
+        "Scientific reasoning includes molecular genetics, off-target effects, and heritability.";
 
         document.getElementById("ethics").innerText =
-        "Ethical debates include safety, consent, equity, misuse, and irreversible genetic changes.";
+        "Ethical analysis addresses consent, justice, safety, and irreversibility.";
 
         document.getElementById("consequences").innerText =
-        "Potential benefits coexist with risks such as off-target effects and social inequality.";
+        "Benefits must be balanced against long-term genetic and societal impacts.";
 
         document.getElementById("solutions").innerText =
-        "Strong ethical review, regulation, and transparency are required.";
+        "Strict governance and ethical review are essential.";
 
         document.getElementById("sources").innerHTML = `
-        <li>WHO – Human Genome Editing Guidelines</li>
-        <li>NIH – Genetic Engineering Research</li>
-        <li>Belmont Report – Bioethical Principles</li>
-        <li>UNESCO – Bioethics & Human Rights</li>`;
+        <li>WHO Human Genome Editing Framework</li>
+        <li>Belmont Report (Autonomy, Beneficence, Justice)</li>
+        <li>Bioethics & Human Rights Principles</li>
+        <li>Risk–Benefit Assessment Models</li>`;
     }
 
     // DEFAULT
     else {
         document.getElementById("context").innerText =
-        "This is a multidisciplinary biotechnology issue requiring careful scientific and ethical evaluation.";
+        "This is a complex biotechnology issue requiring interdisciplinary reasoning.";
 
         document.getElementById("image").src =
         "https://upload.wikimedia.org/wikipedia/commons/6/6a/DNA_double_helix.png";
 
         document.getElementById("science").innerText =
-        "Biotechnology applies biological systems and organisms to solve real-world problems.";
+        "Scientific analysis applies biological principles relevant to the system involved.";
 
         document.getElementById("ethics").innerText =
-        "Ethical frameworks help ensure responsible innovation and harm prevention.";
+        "Ethical frameworks guide responsible decision-making.";
 
         document.getElementById("consequences").innerText =
-        "Impacts depend on scale, governance, and societal context.";
+        "Impacts depend on application scale and governance.";
 
         document.getElementById("solutions").innerText =
-        "Evidence-based, precautionary approaches are recommended.";
+        "Cautious, evidence-based approaches are recommended.";
 
         document.getElementById("sources").innerHTML = `
-        <li>WHO – Biotechnology & Health Policy</li>
-        <li>UNESCO – Ethics of Science & Technology</li>
-        <li>FAO – Agricultural & Environmental Biotechnology</li>`;
+        <li>General Biotechnology Principles</li>
+        <li>UNESCO Ethics of Science</li>
+        <li>Public Health & Environmental Policy Models</li>`;
     }
 }
 </script>
