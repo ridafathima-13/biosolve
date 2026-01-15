@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>BioSolve | Research-Backed Biotechnology Analysis</title>
+<title>BioSolve | Biotechnology & Bioethics Analysis</title>
 
 <style>
 body {
@@ -29,9 +29,6 @@ button {
   border-radius: 5px;
   cursor: pointer;
 }
-button:hover {
-  background: #0949a3;
-}
 .box {
   background: white;
   padding: 20px;
@@ -44,10 +41,6 @@ footer {
   color: gray;
   font-size: 14px;
 }
-.loading {
-  color: #555;
-  font-style: italic;
-}
 </style>
 </head>
 
@@ -55,106 +48,143 @@ footer {
 
 <h1>BioSolve</h1>
 <p>
-A GitHub-based biotechnology & bioethics analysis tool that retrieves
-real peer-reviewed research and evaluates problems from scientific,
-ethical, and societal perspectives.
+A decision-support platform that analyzes biotechnology problems using
+established scientific knowledge and bioethical frameworks.
 </p>
 
-<textarea id="query" placeholder="Example: genetically engineered bacteria for oil spill cleanup ethics"></textarea>
+<textarea id="query" placeholder="Example: Is releasing genetically engineered bacteria for oil spill cleanup ethical?"></textarea>
 <br>
 <button onclick="analyze()">Analyze Responsibly</button>
 
 <div id="output"></div>
 
 <footer>
-BioSolve • Built using open scientific APIs • GitHub Pages
+BioSolve • GitHub Pages • Biotechnology & Bioethics
 </footer>
 
 <script>
-async function analyze() {
-  const query = document.getElementById("query").value.trim();
-  const output = document.getElementById("output");
+function analyze() {
+  const q = document.getElementById("query").value.toLowerCase().trim();
+  const out = document.getElementById("output");
 
-  if (!query) {
-    alert("Please enter a biotechnology problem.");
+  if (!q) {
+    alert("Please enter a problem.");
     return;
   }
 
-  output.innerHTML = "<p class='loading'>Fetching real research papers and analyzing context…</p>";
+  let science = "";
+  let ethics = "";
+  let impact = "";
+  let sources = "";
 
-  try {
-    const apiURL =
-      "https://api.semanticscholar.org/graph/v1/paper/search" +
-      `?query=${encodeURIComponent(query)}` +
-      "&limit=5&fields=title,abstract,year,url";
+  // Environmental / Microbial biotech
+  if (q.includes("bacteria") || q.includes("oil") || q.includes("bioremediation")) {
+    science =
+      "Bioremediation uses microbial metabolism to degrade hydrocarbons. " +
+      "Genetically engineered bacteria can enhance degradation efficiency but may introduce ecological uncertainty.";
 
-    const response = await fetch(apiURL);
-    const data = await response.json();
+    ethics =
+      "Ethical analysis applies the precautionary principle, environmental stewardship, " +
+      "and responsibility to prevent irreversible ecosystem disruption.";
 
-    if (!data.data || data.data.length === 0) {
-      output.innerHTML = "<p>No research papers found for this query.</p>";
-      return;
-    }
+    impact =
+      "Short-term pollution reduction is possible, but long-term impacts include gene transfer, " +
+      "altered microbial communities, and governance challenges.";
 
-    let scienceHTML = "";
-    let sourcesHTML = "<ul>";
-
-    data.data.forEach(paper => {
-      scienceHTML += `
-        <p>
-          <b>${paper.title}</b> (${paper.year || "N/A"})<br>
-          ${paper.abstract || "Abstract not available."}
-        </p>
-      `;
-      sourcesHTML += `
-        <li>
-          <a href="${paper.url}" target="_blank">${paper.title}</a>
-        </li>
-      `;
-    });
-
-    sourcesHTML += "</ul>";
-
-    // Context-aware ethical + impact framing
-    const ethicsText =
-      "Ethical evaluation applies the precautionary principle, environmental stewardship, " +
-      "intergenerational justice, and responsibility for unintended consequences. " +
-      "The acceptability of this biotechnology depends on reversibility, consent, and governance.";
-
-    const impactText =
-      "Potential impacts include ecological restoration, biodiversity disturbance, " +
-      "public trust in biotechnology, regulatory challenges, and long-term sustainability. " +
-      "Outcomes depend on containment strategies, monitoring, and policy oversight.";
-
-    output.innerHTML = `
-      <div class="box">
-        <h3>🔬 Scientific Evidence (Peer-Reviewed Research)</h3>
-        ${scienceHTML}
-      </div>
-
-      <div class="box">
-        <h3>⚖️ Ethical Perspective</h3>
-        <p>${ethicsText}</p>
-      </div>
-
-      <div class="box">
-        <h3>🌍 Societal & Environmental Consequences</h3>
-        <p>${impactText}</p>
-      </div>
-
-      <div class="box">
-        <h3>📚 Research Sources</h3>
-        ${sourcesHTML}
-        <p style="font-size:13px;color:#555;">
-          Sources retrieved via Semantic Scholar Open Research API.
-        </p>
-      </div>
-    `;
-
-  } catch (error) {
-    output.innerHTML =
-      "<p>Error fetching research. Please try again later.</p>";
+    sources = `
+      <ul>
+        <li>Environmental Biotechnology (UNEP)</li>
+        <li>Microbial Ecology Research</li>
+        <li>UNESCO Ethics of Science</li>
+        <li>Precautionary Principle</li>
+      </ul>`;
   }
+
+  // Gene editing
+  else if (q.includes("gene") || q.includes("crispr")) {
+    science =
+      "Gene editing technologies like CRISPR enable precise DNA modification, " +
+      "but may cause off-target effects and heritable changes.";
+
+    ethics =
+      "Ethical frameworks emphasize informed consent, justice, and non-maleficence, " +
+      "especially for germline modifications.";
+
+    impact =
+      "Potential benefits include disease prevention, while risks involve inequality, " +
+      "genetic discrimination, and irreversible societal effects.";
+
+    sources = `
+      <ul>
+        <li>WHO Human Genome Editing Guidelines</li>
+        <li>Belmont Report</li>
+        <li>Bioethics & Human Rights Literature</li>
+      </ul>`;
+  }
+
+  // Marine biology
+  else if (q.includes("coral") || q.includes("marine") || q.includes("ocean")) {
+    science =
+      "Marine biotechnology explores interventions to enhance coral resilience " +
+      "against climate-induced stressors such as warming and acidification.";
+
+    ethics =
+      "Ethical considerations include conservation responsibility versus interference " +
+      "with natural evolutionary processes.";
+
+    impact =
+      "Interventions may prevent ecosystem collapse but risk unintended ecological shifts.";
+
+    sources = `
+      <ul>
+        <li>IPCC Climate Reports</li>
+        <li>IUCN Marine Conservation Ethics</li>
+        <li>Marine Ecology Research</li>
+      </ul>`;
+  }
+
+  // Default
+  else {
+    science =
+      "This biotechnology problem requires interdisciplinary biological analysis.";
+
+    ethics =
+      "Ethical evaluation should consider safety, responsibility, and societal impact.";
+
+    impact =
+      "Consequences depend on scale, governance, and long-term monitoring.";
+
+    sources = `
+      <ul>
+        <li>General Biotechnology Principles</li>
+        <li>UNESCO Bioethics Framework</li>
+      </ul>`;
+  }
+
+  out.innerHTML = `
+    <div class="box">
+      <h3>🔬 Scientific Perspective</h3>
+      <p>${science}</p>
+    </div>
+
+    <div class="box">
+      <h3>⚖️ Ethical Perspective</h3>
+      <p>${ethics}</p>
+    </div>
+
+    <div class="box">
+      <h3>🌍 Societal & Environmental Impact</h3>
+      <p>${impact}</p>
+    </div>
+
+    <div class="box">
+      <h3>📚 Knowledge Sources & Frameworks</h3>
+      ${sources}
+      <p style="font-size:13px;color:#555;">
+        Analysis based on established scientific literature and international bioethics guidelines.
+      </p>
+    </div>
+  `;
 }
 </script>
 
